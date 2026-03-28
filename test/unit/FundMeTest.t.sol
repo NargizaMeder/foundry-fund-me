@@ -13,7 +13,6 @@ contract FundMeTest is Test {
 
     address USER = makeAddr("user");
 
-
     function setUp() public {
         //fundMe = new FundMe();
         DeployFundMe deployFundMe = new DeployFundMe();
@@ -26,8 +25,8 @@ contract FundMeTest is Test {
     }
 
     function testOwnerIsMsgSender() public {
-       // console.log("Owner address:", fundMe.i_owner());
-       // console.log("Msg.sender address:", msg.sender);
+        // console.log("Owner address:", fundMe.i_owner());
+        // console.log("Msg.sender address:", msg.sender);
         assertEq(fundMe.getOwner(), msg.sender);
     }
 
@@ -65,13 +64,12 @@ contract FundMeTest is Test {
     }
 
     function testOnlyOwnerCanWithdraw() public funded {
-        
         vm.expectRevert();
         vm.prank(USER);
         fundMe.withdraw();
     }
 
-        function testWithdrawFromASingleFunder() public funded {
+    function testWithdrawFromASingleFunder() public funded {
         // Arrange
         uint256 startingFundMeBalance = address(fundMe).balance;
         uint256 startingOwnerBalance = fundMe.getOwner().balance;
@@ -116,5 +114,4 @@ contract FundMeTest is Test {
         assert(address(fundMe).balance == 0);
         assert(startingFundedeBalance + startingOwnerBalance == fundMe.getOwner().balance);
     }
-
 }

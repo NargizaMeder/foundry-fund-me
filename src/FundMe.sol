@@ -73,7 +73,7 @@ contract FundMe {
         fund();
     }
 
-        /**
+    /**
      * Getter Functions
      */
 
@@ -85,7 +85,6 @@ contract FundMe {
     function getAddressToAmountFunded(address fundingAddress) public view returns (uint256) {
         return s_addressToAmountFunded[fundingAddress];
     }
-
 
     function getFunder(uint256 index) public view returns (address) {
         return s_funders[index];
@@ -99,10 +98,9 @@ contract FundMe {
         return s_priceFeed;
     }
 
-        function getVersion() public view returns (uint256) {
+    function getVersion() public view returns (uint256) {
         return s_priceFeed.version();
     }
-    
 }
 
 // Concepts we didn't cover yet (will cover in later sections)
